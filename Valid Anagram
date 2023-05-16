@@ -1,0 +1,34 @@
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
+TO check we simply check the frequency of the char in both the string 
+if both the string have the same frequency that's a Anagaram
+else it's not
+
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        int[] frequency = new int[26];
+      
+        //for increasing the frequency
+        for(int i=0;i<s.length();i++)
+        {
+            frequency[s.charAt(i)-'a']++;
+        }
+
+        //for decreasing the frequnecy
+        for(int i=0;i<t.length();i++)
+        {
+            frequency[t.charAt(i)-'a']--;
+        }
+
+        // for(int nums:frequency)
+        //     System.out.print(nums + " ");
+        
+        for(int num:frequency)
+        {
+            if(num !=0)
+                return false;
+        }
+        return true;
+    }
+}
+
