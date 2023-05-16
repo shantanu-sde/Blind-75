@@ -1,0 +1,57 @@
+Contains Duplicate
+-->Brute Force will be that we take each element and compare it by left elements one by one and return accoudingly
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        for(int i=0;i<nums.length-1;i++)
+        {
+            for(int j=i+1;j<nums.length;j++)
+            {
+                if(nums[i]==nums[j])
+                    return true;
+            }
+        }
+        return false;
+    }
+}
+--->but as the constrains are
+1 <= nums.length <= 105
+-109 <= nums[i] <= 109
+
+so this solution will be of O(n2) and show TLE as it should be done in O(n) and lower if possible so we will now going to sort the array and compare the consecutives elements
+
+import java.util.*;
+
+class Solution {
+
+    public boolean containsDuplicate(int[] nums) {
+        Arrays.sort(nums);
+        for(int i=0;i<nums.length-1;i++)
+        {
+            for(int j=i+1;j<nums.length;j++)
+            {
+                if(nums[i]==nums[j])
+                    return true;
+            }
+        }
+        return false;
+    }
+}
+this will show the TLE too as sorting function is O(nlogn) but two for nested loops will be O(n2)
+
+so we think of sets in java having the property that they cant have the duplicates elements in them.
+
+import java.util.*;
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        Set<Integer> set=new HashSet<Integer>();
+        for(int i=0;i<nums.length;i++)
+            set.add(nums[i]);
+
+        if(set.size() == nums.length)
+            return false;
+
+        return true;
+        
+    }
+}
+solution O(n)
