@@ -1,0 +1,22 @@
+To get the group anagram we are going to use the HashMap for the quick acess 
+but as we are doing the sorting for the each and all elements
+so its O(mnlogn)
+
+import java.util.*;
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        HashMap<String,List<String>> mp = new HashMap<>();
+        for(String s: strs)
+        {
+            char[] charArray = s.toCharArray();
+            Arrays.sort(charArray);
+            String sorted = new String(charArray);
+
+            if(!mp.containsKey(sorted))
+                mp.put(sorted, new LinkedList<String>() );
+            
+            mp.get(sorted).add(s);
+        }
+        return new LinkedList<>(mp.values());
+    }
+}
