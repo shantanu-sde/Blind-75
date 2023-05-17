@@ -1,0 +1,44 @@
+As the constrains given problem can be done within O(n2) but need the lower complexity
+--->
+check each element with one by one element
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int[] ans=new int[2];
+
+        for(int i=0;i<nums.length-1;++i)
+        {
+            for(int j=i+1;j<nums.length;++j)
+            {
+                if(nums[i] + nums[j] == target)
+                {
+                    ans[0]=i;
+                    ans[1]=j;
+                    return ans;
+                }
+            }
+        }
+        return ans;
+    }
+}
+
+
+--------------->but using the hashmap it can be done in O(n) as finding the elements in the hasmap is constant 
+class Solution{
+public int[] twoSum(int[] nums,int target)
+{
+  HashMap<Integer,Integer> hm = new HashMap<Integer,Integer>();
+  
+  for(int i=0;i<nums.length;++i)
+  {
+      int num=nums[i];
+      int diff=target-num;
+      
+      if(hm.containsKey(diff))
+        return new int[]{hm.get(diff),i)};
+        
+       hm.put(num.i);
+  }
+  return new int[]{};
+}
+
+}
